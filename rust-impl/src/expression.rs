@@ -295,7 +295,6 @@ impl ArithmeticNode {
             None => {
                 // There is no split point, this occurs in the following cases:
                 // - Our expression is fully parenthesized
-                // - Our expression is a literal
                 // - Our expression is the invocation of a function (i.e sqrt)
 
                 match expr {
