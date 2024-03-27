@@ -101,11 +101,11 @@ public class Parser{
 
   private ArithmeticNode parse_expr(List<Token> toks) throws CalculatorError{
     if(toks.isEmpty()) throw new RuntimeException("Empty token list to parse");
-    Span subexpr_span = toks.getFirst().location.up_to_end(toks.getLast().location);
+    Span subexpr_span = toks.get(0).location.up_to_end(toks.get(toks.size()-1).location);
 
     if(toks.size() == 1){
       // single token 
-      Token t = toks.getFirst();
+      Token t = toks.get(0);
 
       switch(t.kind){
         case Number:
@@ -172,9 +172,9 @@ public class Parser{
       // - Our expression is fully parenthesized (only when toplevel_count = 1 [first open paren])
       // - Our expression is the invocation of a function (i.e sqrt) (toplevel_count = 2 [first open paren + function name])
       // - An invalid expression is trying to be passed in as valid
-      Token first = toks.getFirst();
+      Token first = toks.get(0);
       Token second = toks.get(1);
-      Token last = toks.getLast();
+      Token last = toks.get(toks.size()-1);
 
       if(first.kind == TokenKind.OpenParen && last.kind == TokenKind.CloseParen){
         if(toplevel_count != 1){

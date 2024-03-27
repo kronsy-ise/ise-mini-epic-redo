@@ -39,7 +39,9 @@ public class FunctionNode extends ArithmeticNode{
     // Convert degrees to radians
     new FnDecl("deg", 1, (s, a) -> a[0]/360 * 2 * Math.PI),
     // Convert radians to degrees 
-    new FnDecl("rad", 1, (s, a) -> a[0] / (2*Math.PI) * 360)
+    new FnDecl("rad", 1, (s, a) -> a[0] / (2*Math.PI) * 360),
+
+    new FnDecl("sinh", 1, (s, a) -> Math.sinh(a[0]))
   };
 
   public FunctionNode(VariableNode name, ArrayList<ArithmeticNode> args, Span span){
@@ -57,7 +59,7 @@ public class FunctionNode extends ArithmeticNode{
     for(var a : arguments){
       rep += a.into_rpn() + " ";
     }
-    rep += " >| " + this.name + " )";
+    rep += ">| " + this.name.var_name + " )";
     return rep;
   }
 

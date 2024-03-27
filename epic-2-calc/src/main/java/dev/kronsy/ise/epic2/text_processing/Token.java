@@ -14,4 +14,8 @@ public class Token{
   }
 
 
+  public boolean equals(Object o){
+    Token t = (Token)o;
+    return t.kind.equals(this.kind) && t.value.equals(this.value);
+  }
 }

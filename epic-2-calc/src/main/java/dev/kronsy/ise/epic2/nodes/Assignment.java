@@ -18,7 +18,7 @@ public class Assignment extends Statement{
   public Span span;
 
   public String toString(){
-    return "SET '" + this.target_value + "' = " + this.assigned_value.into_rpn();
+    return "SET " + this.target_value.var_name + " = " + this.assigned_value.into_rpn();
   }
 
 

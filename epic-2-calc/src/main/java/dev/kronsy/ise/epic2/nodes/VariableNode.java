@@ -20,6 +20,11 @@ public class VariableNode extends ArithmeticNode{
   }
 
   public Double resolve(VariableStore vars) throws CalculatorError{
-    return vars.get(this.var_name);
+    Double value = vars.get(this.var_name);
+
+    if(value == null){
+      throw new CalculatorError(this.span, "Undefined variable '"+this.var_name+"'");
+    }
+    return value;
   }
 }
