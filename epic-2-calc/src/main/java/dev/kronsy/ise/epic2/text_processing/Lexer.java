@@ -164,7 +164,8 @@ public class Lexer{
     if(this.index >= this.input.length()) throw new EndOfInput();
     return this.input.charAt(this.index);
   }
-  private char peek(int n){
+  private char peek(int n) throws EndOfInput{
+    if(this.index + n - 1 >= this.input.length()) throw new EndOfInput();
     return this.input.charAt(this.index + n - 1);
   }
 

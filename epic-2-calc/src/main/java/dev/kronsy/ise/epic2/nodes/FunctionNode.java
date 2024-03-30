@@ -28,6 +28,7 @@ public class FunctionNode extends ArithmeticNode{
    *
    * Declarations of built-in functions in the mathematical evaluator
    *
+   * funcname, arg_count, hanlder(span, arguments[arg_count]) 
    */
   final FnDecl[] funcs = {
     new FnDecl("sin", 1, (s, a) -> Math.sin(a[0])),
@@ -41,7 +42,6 @@ public class FunctionNode extends ArithmeticNode{
     // Convert radians to degrees 
     new FnDecl("rad", 1, (s, a) -> a[0] / (2*Math.PI) * 360),
 
-    new FnDecl("sinh", 1, (s, a) -> Math.sinh(a[0]))
   };
 
   public FunctionNode(VariableNode name, ArrayList<ArithmeticNode> args, Span span){
