@@ -183,6 +183,10 @@ public class Parser{
           throw new CalculatorError(interrupter.location, "Bracket interrupt");
         }
         var center = toks.subList(1, toks.size() - 1);
+
+        if(center.size() == 0){
+          throw new CalculatorError(toks.get(0).location.up_to_end(toks.get(toks.size()-1).location), "Blank Parenthesized Expression");
+        }
         return parse_expr(center); 
       }
       else if(first.kind == TokenKind.Word && second.kind == TokenKind.OpenParen && last.kind == TokenKind.CloseParen){
